@@ -1,0 +1,12 @@
+### PUT request to update the existing patient
+PUT http://localhost:4000/patients/28447b8f-eff0-41bc-928e-064f1145fd74 
+Content-Type: application/json
+
+{
+"name": "John Doe - Updated",
+"email": "asad@sefef.com",
+"address": "dummy address",
+"dateOfBirth": "2000-01-01"
+}
+
+###
