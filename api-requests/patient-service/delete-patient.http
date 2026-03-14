@@ -1,3 +1,3 @@
 ### DELETE request to update the existing patient
-DELETE http://localhost:4000/patients/b1a1c2d3-e015-4a2b-9a11-ffffffffffff
+DELETE http://localhost:4000/patients/e50516d6-256c-48a5-bcc7-f2597172c2fc
 ###
