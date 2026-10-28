@@ -11,7 +11,7 @@ description = 'billing-service'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
@@ -25,6 +25,8 @@ dependencies {
     // Testing
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    compileOnly 'org.projectlombok:lombok:1.18.48'          // annotations visible while compiling
+    annotationProcessor 'org.projectlombok:lombok:1.18.48'
 
     // gRPC + Protobuf
     implementation 'io.grpc:grpc-netty-shaded:1.85.1'
@@ -54,25 +56,25 @@ configurations {
 }
 
 
-//protobuf {
-//    protoc {
-//        artifact = "com.google.protobuf:protoc:3.25.5"
-//    }
-//
-//    plugins {
-//        grpc {
-//            artifact = "io.grpc:protoc-gen-grpc-java:1.68.1"
-//        }
-//    }
-//
-//    generateProtoTasks {
-//        all().each { task ->
-//            task.plugins {
-//                grpc {}
-//            }
-//            task.builtins {
-//                java {}
-//            }
-//        }
-//    }
-//}
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:4.36.2"
+    }
+
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:1.85.1"
+        }
+    }
+
+    generateProtoTasks {
+        all().each { task ->
+            task.plugins {
+                grpc {}
+            }
+            task.builtins {
+                java {}
+            }
+        }
+    }
+}

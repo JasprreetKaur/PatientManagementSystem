@@ -11,7 +11,7 @@ description = 'patient-service'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
@@ -39,7 +39,10 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.48'  // actually generates the code
     implementation 'io.swagger.core.v3:swagger-annotations:2.2.55'
 // Source: https://mvnrepository.com/artifact/jakarta.annotation/jakarta.annotation-api
-    implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'}
+    implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.2.0'
+
+}
 
 //tasks.named('test') {
 //    useJUnitPlatform()
@@ -53,12 +56,12 @@ configurations {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.25.5"
+        artifact = "com.google.protobuf:protoc:4.36.2"
     }
 
     plugins {
         grpc {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.68.1"
+            artifact = "io.grpc:protoc-gen-grpc-java:1.85.1"
         }
     }
 

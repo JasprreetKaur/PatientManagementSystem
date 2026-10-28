@@ -19,7 +19,6 @@ import java.util.UUID;
 @Tag(name = "Patient", description = "API for managing patient records")
 public class PatientController {
 
-
     private final PatientService patientService;
 
     public PatientController(PatientService patientService) {
@@ -27,7 +26,7 @@ public class PatientController {
     }
 
     @GetMapping
-    @Operation(summary = "Get Patients")
+    @Operation(summary = "Get patients")
     public ResponseEntity<List<PatientResponseDTO>> getPatients() {
         return ResponseEntity.ok().body(patientService.getPatients());
     }
