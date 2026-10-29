@@ -22,23 +22,20 @@ repositories {
 dependencies {
     // Spring Boot
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-grpc-server'
+
+    // gRPC extras
+    implementation 'io.grpc:grpc-services'      // reflection
+    implementation 'io.grpc:grpc-protobuf'
+    implementation 'io.grpc:grpc-stub'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.48'
+    annotationProcessor 'org.projectlombok:lombok:1.18.48'
+
     // Testing
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    compileOnly 'org.projectlombok:lombok:1.18.48'          // annotations visible while compiling
-    annotationProcessor 'org.projectlombok:lombok:1.18.48'
-
-    // gRPC + Protobuf
-    implementation 'io.grpc:grpc-netty-shaded:1.85.1'
-    implementation 'io.grpc:grpc-protobuf:1.85.1'
-    implementation 'io.grpc:grpc-stub:1.85.1'
-    implementation 'com.google.protobuf:protobuf-java:4.36.2'
-
-    // Misc
-    implementation 'org.apache.tomcat:tomcat-annotations-api:11.0.27'
-// Source: https://mvnrepository.com/artifact/jakarta.annotation/jakarta.annotation-api
-    implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
-    implementation 'net.devh:grpc-spring-boot-starter:3.1.0.RELEASE'
 }
 
 tasks.named('test') {
@@ -57,23 +54,14 @@ configurations {
 
 
 protobuf {
-    protoc {
-        artifact = "com.google.protobuf:protoc:4.36.2"
-    }
-
     plugins {
-        grpc {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.85.1"
-        }
+        grpc {}
     }
 
     generateProtoTasks {
         all().each { task ->
             task.plugins {
                 grpc {}
-            }
-            task.builtins {
-                java {}
             }
         }
     }

@@ -3,7 +3,7 @@ package com.pm.billingservice.grpc;
 import billing.BillingResponse;
 import billing.BillingServiceGrpc;
 import io.grpc.stub.StreamObserver;
-import net.devh.boot.grpc.server.service.GrpcService;
+import org.springframework.grpc.server.service.GrpcService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +13,7 @@ public class BillingGrpcService extends BillingServiceGrpc.BillingServiceImplBas
 
     @Override
     public void createBillingAccount(billing.BillingRequest billingRequest, StreamObserver<billing.BillingResponse> responseObserver){
-        log.info("createBillingAccount reques received {}", billingRequest.toString());
+        log.info("createBillingAccount request received {}", billingRequest.toString());
 
         //Business logic goes here
 
