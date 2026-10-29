@@ -1,7 +1,7 @@
 package com.pm.patientservice.kafka;
 
 import com.pm.patientservice.model.Patient;
-import events.PatientEvent;
+import patient.events.PatientEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;

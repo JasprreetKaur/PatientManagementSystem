@@ -45,4 +45,5 @@ VALUES ('b1a1c2d3-e001-4a2b-9a11-111111111111', 'John Doe', 'john.doe@example.co
        ('b1a1c2d3-e014-4a2b-9a11-eeeeeeeeeeee', 'Mia Harris', 'mia.harris@example.com', '77 Cypress Street',
         '1991-01-29', '2022-10-03'),
        ('b1a1c2d3-e015-4a2b-9a11-ffffffffffff', 'Lucas Clark', 'lucas.clark@example.com', '5 Redwood Avenue',
-        '1994-07-19', '2022-10-25');
+        '1994-07-19', '2022-10-25')
+    ON CONFLICT DO NOTHING;
