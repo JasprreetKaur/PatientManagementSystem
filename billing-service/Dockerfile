@@ -3,8 +3,8 @@ FROM gradle:9.8-jdk25 AS builder
 WORKDIR /app
 COPY build.gradle settings.gradle ./
 RUN gradle dependencies --no-daemon || true
-COPY . .
-RUN ./gradlew clean bootJar --no-daemon
+COPY src ./src
+RUN gradle bootJar --no-daemon
 
 FROM eclipse-temurin:25-jre AS runner
 WORKDIR /app
