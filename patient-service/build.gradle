@@ -35,7 +35,6 @@ dependencies {
     implementation 'io.grpc:grpc-protobuf'
     implementation 'io.grpc:grpc-stub'
 
-// Source: https://mvnrepository.com/artifact/org.projectlombok/lombok
     compileOnly 'org.projectlombok:lombok:1.18.48'          // annotations visible while compiling
     annotationProcessor 'org.projectlombok:lombok:1.18.48'  // actually generates the code
 //    implementation 'io.swagger.core.v3:swagger-annotations:2.2.55'
