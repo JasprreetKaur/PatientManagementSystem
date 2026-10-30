@@ -20,6 +20,7 @@ spring:
                 - Path=/api-docs/patients
               filters:
                 - RewritePath=/api-docs/patients,/v3/api-docs
+                - JwtValidation
 
             - id: auth-service-route
               uri: http://auth-service:4005
