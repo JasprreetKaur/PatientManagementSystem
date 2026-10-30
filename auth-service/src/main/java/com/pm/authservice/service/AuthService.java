@@ -16,7 +16,7 @@ public class AuthService {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
-    
+
     public AuthService(UserService userService, PasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
@@ -24,11 +24,11 @@ public class AuthService {
     }
 
     public Optional<String> authenticate(LoginRequestDto loginRequestDto) {
-        Optional<User> user = userService
+        Optional<User> token = userService
                 .findByEmail(loginRequestDto.getEmail())
                 .filter(u -> passwordEncoder.matches(loginRequestDto.getPassword(),
                         u.getPassword()))
                 .map(u -> jwtUtil.generateToken(u.getEmail(), u.getRole()));
-
+        return token;
     }
 }
