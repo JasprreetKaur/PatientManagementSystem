@@ -1,11 +1,9 @@
 package com.pm.authservice.service;
 
 import com.pm.authservice.dto.LoginRequestDto;
-import com.pm.authservice.model.User;
 import com.pm.authservice.util.JwtUtil;
-import org.apache.catalina.CredentialHandler;
+import io.jsonwebtoken.JwtException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -24,11 +22,19 @@ public class AuthService {
     }
 
     public Optional<String> authenticate(LoginRequestDto loginRequestDto) {
-        Optional<User> token = userService
+        return userService
                 .findByEmail(loginRequestDto.getEmail())
                 .filter(u -> passwordEncoder.matches(loginRequestDto.getPassword(),
                         u.getPassword()))
                 .map(u -> jwtUtil.generateToken(u.getEmail(), u.getRole()));
-        return token;
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            jwtUtil.validatToken(token);
+            return true;
+        }catch (JwtException e){
+            return false;
+        }
     }
 }
